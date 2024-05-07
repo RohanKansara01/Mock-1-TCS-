@@ -7,15 +7,15 @@ const QuizPage = () => {
   const [data, setData] = useState([]);
   const [score, setScore] = useState(0);
   const navigate = useNavigate()
-  const handleNextQuestion =()=>{
-    navigate("/leaderboard")
+  const handleNextQuestion = () => {
+   navigate("/leaderboard")
   };
   
   const setQuiz = async() => {
       try {
-          const question = JSON.parse(sessionStorage.getItem("user-data"));
-          const category = question.category;
-          const data = await axios.get(`url`)
+          const que = JSON.parse(sessionStorage.getItem("user-data"));
+          const cat = que.category;
+          const data = await axios.get(`https://proud-ray-clothes.cyclic.app/data?category=${cat}&_limit=${que.number}`)
           setData(data.data)
         } catch (error) {
             console.error(error);
@@ -28,11 +28,11 @@ const QuizPage = () => {
     }, []);
     
     return (
-        <Box>
+        <Box mt={50} w={'100%'} display={'flex'} flexDirection={'column'} alignItems={'center'} justifyContent={'center'} h={'100vh'} gap={10}>
       {data.map((e , index)=>(
           <Quiz e={e} key={index}/>
       ))}
-      <Stack>
+      <Stack display={'flex'} flexDirection={'row'} mb={15}>
       <Button onClick={handleNextQuestion}>Submit</Button>
       </Stack>
     </Box>
@@ -50,7 +50,7 @@ const Quiz = (e) => {
     e=e.e
     console.log(e)
   return (
-    <Box>
+    <Box mb={5} mt={50} w={'100vh'} border={'1px solid black'} bg='skyblue' color={'white'} _groupDisabled={select?true:false}>
         <Stack>
             <Text mb={5}>{e.question}</Text>
             <button onClick={()=>{
