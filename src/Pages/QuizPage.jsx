@@ -12,11 +12,15 @@ const QuizPage = () => {
   };
   
   const setQuiz = async() => {
+    console.log("Fetching quiz data...");
       try {
           const que = JSON.parse(sessionStorage.getItem("user-data"));
+          //console.log(que);
           const cat = que.category;
-          const data = await axios.get(`https://proud-ray-clothes.cyclic.app/data?category=${cat}&_limit=${que.number}`)
-          setData(data.data)
+          //console.log(cat)
+          //console.log(que.numberOfQuestion);
+          const response = await axios.get(`https://proud-ray-clothes.cyclic.app/data?category=${cat}&_limit=${que.numberOfQuestion}`)
+          setData(response.data)
         } catch (error) {
             console.error(error);
         }
@@ -29,7 +33,7 @@ const QuizPage = () => {
     
     return (
         <Box mt={50} w={'100%'} display={'flex'} flexDirection={'column'} alignItems={'center'} justifyContent={'center'} h={'100vh'} gap={10}>
-      {data.map((e , index)=>(
+      {data.map((e, index)=>(
           <Quiz e={e} key={index}/>
       ))}
       <Stack display={'flex'} flexDirection={'row'} mb={15}>
@@ -47,7 +51,7 @@ const Quiz = (e) => {
     const [bg3, setBg3] = useState("");
     const [bg4, setBg4] = useState("");
     const [select, setSelect] = useState(0);
-    e=e.e
+    // e=e.e
     console.log(e)
   return (
     <Box mb={5} mt={50} w={'100vh'} border={'1px solid black'} bg='skyblue' color={'white'} _groupDisabled={select?true:false}>
