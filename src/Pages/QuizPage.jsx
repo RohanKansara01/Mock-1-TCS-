@@ -46,39 +46,40 @@ const QuizPage = () => {
 export default QuizPage;
 
 const Quiz = (e) => {
+    const [bg, setBg] = useState("");
     const [bg1, setBg1] = useState("");
     const [bg2, setBg2] = useState("");
     const [bg3, setBg3] = useState("");
-    const [bg4, setBg4] = useState("");
     const [select, setSelect] = useState(0);
-    // e=e.e
+    e=e.e
     console.log(e)
+
   return (
-    <Box mb={5} mt={50} w={'100vh'} border={'1px solid black'} bg='skyblue' color={'white'} _groupDisabled={select?true:false}>
+    <Box mb={5} mt={50} w={'100vh'} border={'1px solid black'} bg='#6b5cd5' color={'white'} _groupDisabled={select?true:false}>
         <Stack>
             <Text mb={5}>{e.question}</Text>
             <button onClick={()=>{
                     setSelect(0);
-                    setBg1('green');
-                }} style={{border:'1px solid black',  background:bg1}}>
+                    setBg('green');
+                }} style={{border:'1px solid white',  background:bg}}>
                 {e.correct_answer}
             </button>
             <button onClick={()=>{
                     setSelect(0);
-                    setBg2('red');
-                }} style={{border:'1px solid black', background:bg2}}>
+                    setBg1('red');
+                }} style={{border:'1px solid white', background:bg1}}>
                 {e.incorrect_answers[1]}
             </button>
             <button onClick={() =>{
                     setSelect(0);
-                    setBg3('red');
-                }} style={{border:'1px solid black', background:bg3}}>
+                    setBg2('red');
+                }} style={{border:'1px solid white', background:bg2}}>
                 {e.incorrect_answers[0]}
             </button>
             <button onClick={() => {
                     setSelect(0);
-                    setBg4('red');
-                }} style={{border:'1px solid black', background:bg4}}>
+                    setBg3('red');
+                }} style={{border:'1px solid white', background:bg3}}>
                 {e.incorrect_answers[2]}
             </button>
         </Stack>
