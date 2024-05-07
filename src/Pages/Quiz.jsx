@@ -7,8 +7,8 @@ const QuizPage = () => {
   const [data, setData] = useState([]);
   const [score, setScore] = useState(0);
   const navigate = useNavigate()
-  const handleNextQuestion = () => {
-   navigate("/leaderboard")
+  const handleNextQuestion =()=>{
+    navigate("/leaderboard")
   };
   
   const setQuiz = async() => {
