@@ -55,7 +55,7 @@ const Quiz = (e) => {
             <Text mb={5}>{e.question}</Text>
             <button onClick={()=>{
                     setSelect(0);
-                    setBg1('pink');
+                    setBg1('green');
                 }} style={{border:'1px solid black',  background:bg1}}>
                 {e.correct_answer}
             </button>
